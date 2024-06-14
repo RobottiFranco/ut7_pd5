@@ -1,0 +1,29 @@
+lenguaje natural:
+se inicializa una lista que va a tener el registro de los vertices visitados, para cada vertice en el grafo verifica que no forma parte del cimino, si se encuentra
+significa que hay un ciclo retornando true, si no hay ciclos retorna false
+
+
+Precondiciones:
+- El grafo debe estar correctamente representado con vértices almacenados en una estructura de datos accesible, como un mapa o diccionario.
+- Cada vértice debe tener un método `getVisitado()` que indique si ha sido visitado.
+- Cada vértice debe tener un método `tieneCiclo(Lista<Comparable> camino)` que compruebe si existe un ciclo desde ese vértice, utilizando la lista `camino` para llevar el registro.
+
+Postcondiciones:
+- El método retornará `true` si se detecta un ciclo en el grafo.
+- El método retornará `false` si no se detecta ningún ciclo en el grafo.
+- Los vértices visitados serán marcados como visitados durante el proceso de verificación de ciclos.
+
+tieneCiclo() retorna boolean:
+COM
+  crear lista vacía llamada camino
+
+  para cada vértice tVertice en el conjunto de vértices:
+      si tVertice no ha sido visitado:
+        si tVertice.tieneCiclo(camino) es verdadero:
+          retornar verdadero
+        fin si
+      fin si
+  retornar falso
+FIN
+
+El metodo tiene un orden de (V + E) vertices + aristas del grafo

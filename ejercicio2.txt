@@ -1,0 +1,47 @@
+lenguaje natural:
+se fija si el vertice origen es nulo, si lo es retorna nulo,
+crea una lista y llama a la funcion clasificacionTopologica a nivel de
+vertice pasando la lista recien creada, una vez finalizado invierte la lista
+y la retorna.
+
+Precondiciones:
+ - Ser un grafo acíclico
+
+Postcondiciones:
+- La lista resultante contendrá los vértices en orden topológico si el grafo no tiene ciclos.
+- Los vértices visitados serán marcados como visitados durante el proceso.
+
+
+TGrafoDirigido
+
+método clasificacionTopologica(origen) retorna Lista<Comparable>:
+COM
+    si buscarVertice(origen) es nulo:
+      retornar nulo
+    fin si
+    lista result = nueva Lista()
+    buscarVertice(origen).clasificacionTopologica(result)
+    invertir result
+    retornar result
+FIN
+
+TVertice
+
+lenguaje natural:
+el metodo viene de TGrafoDirigido, marca el vertice actual,
+recorre cada adyacente del vertice, por cada adyacente obtiene el vertice destino y
+si no esta visitado llama clasificacionTopologica, cuando finaliza agrega el vertice a la lista
+
+método clasificacionTopologica(orden):
+COM
+    marcar este vértice como visitado
+
+    para cada adyacencia en las adyacencias de este vértice:
+        vertAdy = obtener vértice destino de la adyacencia
+        si vertAdy no ha sido visitado:
+          vertAdy.clasificacionTopologica(orden)
+        fin si
+    agregar etiqueta de este vértice a orden
+FIN
+
+El metodo tiene un orden de (V + E) vertices + aristas del grafo
